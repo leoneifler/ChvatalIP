@@ -1,0 +1,10 @@
+-R . ValChvatal
+src/SparseMatrix.v
+src/SeqSet.v
+src/ParsingTools.v
+src/LineParser.v
+src/GenChvatalMatrix.v
+src/GenChvatalMatrixRevised.v
+src/CheckVipr.v
+
+

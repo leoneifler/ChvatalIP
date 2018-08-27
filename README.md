@@ -1,5 +1,17 @@
 # Integer programming proofs for Chvátal's conjecture over finite ground sets
 
+Chvátal's Conjecture states that there can exist no intersecting family in a downset that has more elements than a maximal-sized star. A collection of work on the subject is available on [Chvátal's Website](http://users.encs.concordia.ca/~chvatal/conjecture.html).
+We present a computational framework that is able to prove the conjecture for ground sets of seven or fewer elements ([Preprint](link)).
+
+This repository provides:
+- MPS and ZIMPL files that model the Integer Programs described in the paper.
+- Certificate files that show the correctness of the computational proofs
+- Links to external software
+- An input-checker written in Coq.
+
+## Solving Mixed Integer Programs Exactly
+
+Exact SCIP is the exact rational variant of SCIP. A version that supports automatic certificate generation is available on the [SCIP website](http://scip.zib.de/#exact). It interfaces [QSopt_Ex](http://www.dii.uchile.cl/~daespino/ESolver_doc/main.html) as an exact rational LP solver.
 
 ## An Input checker for VIPR certificates for Chvàtal's Conjecture
 

@@ -1,4 +1,7 @@
-# An Input checker for VIPR certificates for Chvàtal's Conjecture
+# Integer programming proofs for Chvátal's conjecture over finite ground sets
+
+
+## An Input checker for VIPR certificates for Chvàtal's Conjecture
 
 This small program written with the [Coq proof assistant](https://coq.inria.fr/)
 checks the input for certain [VIPR](https://github.com/ambros-gleixner/VIPR) certificate files
@@ -10,7 +13,7 @@ reference
 This repository contains source code, several compilation scripts, as well as some example certificate files.
 
 
-## Installation instructions
+### Installation instructions
 
 This program needs a working installation of coq.
 It uses the Coq.io library which can be installed with opam via

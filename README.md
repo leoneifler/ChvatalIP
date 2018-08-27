@@ -11,7 +11,7 @@ This repository provides:
 
 ## Solving Mixed Integer Programs Exactly
 
-Exact SCIP is the exact rational variant of SCIP. A version that supports automatic certificate generation is available on the [SCIP website](http://scip.zib.de/#exact). It interfaces [QSopt_Ex](http://www.dii.uchile.cl/~daespino/ESolver_doc/main.html) as an exact rational LP solver.
+Exact SCIP is the exact rational variant of SCIP. A version that supports automatic certificate generation is available on the [SCIP website](http://scip.zib.de/#exact). It interfaces [QSopt_Ex](http://www.dii.uchile.cl/~daespino/ESolver_doc/main.html) as an exact rational LP solver. The correctness of exact SCIP can be verified using [VIPR](https://github.com/ambros-gleixner/VIPR), an independant certificate format for integer programming results.
 
 ## An Input checker for VIPR certificates for Chvàtal's Conjecture
 

@@ -1,0 +1,45 @@
+# This is a small patch for QSopt_ex-2.5.10 to support printing of certificates with exact SCIP.
+# In the code of QSopt_eq-2.5.10 replace the lines starting with a '-' with a '+'
+
+--- Old version: TEmplate/mpq_simplex.c
++++ New version: TEmplate/mpq_simplex.c
+@@ -661,12 +661,15 @@
+ 		return 0;
+ 
+ 	ls = &(lp->basisstat);
+-	if (ls->primal_infeasible == 0 && ls->dual_unbounded == 0)
+-	{
+-		EG_RETURN (1);
+-	}
+-
+-	if (lp->final_phase == PRIMAL_PHASEI && lp->pIpiz != NULL)
++	if (ls->primal_infeasible == 0 && ls->dual_unbounded == 0 && lp->pIpiz != NULL)
++	{
++                /* This case can arise when infeas is concluded by QSexact_infeasible_test() */
++                /* In such case we should return the y vector encountered in that test  */
++                /* perhaps a new 'lp->final_phase' should be added to signify this case */
++                for (i = 0; i < lp->nrows; i++)
++                        mpq_EGlpNumCopy (pi[i], lp->pIpiz[i]);
++	}
++        else if (lp->final_phase == PRIMAL_PHASEI && lp->pIpiz != NULL)
+ 	{
+ 		for (i = 0; i < lp->nrows; i++)
+ 			mpq_EGlpNumCopy (pi[i], lp->pIpiz[i]);
+
+
+--- Old version: src/ecact.c
++++ Patched version: src/ecact.c
+@@ -915,6 +915,13 @@
+ 		}
+ 		goto CLEANUP;
+ 	}
++
++   mpq_EGlpNumReallocArray (&( p->lp->pIpiz ), p->qslp->nrows);
++   for (i = 0; i < qslp->nrows; ++i)
++   {
++      mpq_EGlpNumCopy(p->lp->pIpiz[i], d_sol[i]);
++   }
++   p->lp->nrows = qslp->nrows;
+ 	p->qstatus = QS_LP_INFEASIBLE;
+ 
+ 	/* ending */

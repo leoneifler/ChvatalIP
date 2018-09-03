@@ -64,8 +64,8 @@ Definition writeE ( a : (prod nat  Z) )  : LString.t  :=
 
 Definition writeE' ( a : (prod nat  Z) )  : LString.t  :=
   let (n,z) := a in
-  if n == 0 then [" "; "<"; "="; " "] ++ writeZ z 
-  else (writeZ z) ++  [" ";"x";"_";" "] ++ (writeNat n) ++ [" "]. 
+  if n == 0 then [" "; "<"; "="; " "] ++ writeZ z
+  else (writeZ z) ++  [" ";"x";"_";" "] ++ (writeNat n) ++ [" "].
 
 (**  Convert sparse vector to string *)
 Definition toStringSvec ( v : svec)  : LString.t  :=
@@ -79,6 +79,10 @@ Definition toStringIneqSvec ( v : svec ) : LString.t :=
 Definition  toString (m : smat) : LString.t :=
   join  ([Char.n])  [seq (toStringIneqSvec h) | h <- m].
 
+Definition toStringNat (n : seq nat) : LString.t :=
+  foldr cat nil [seq (writeNat x) | x <- n].
+
+Compute toStringNat [1;19;14].
 
 Section AsciiEqType.
   Lemma eqasciiP : Equality.axiom Char.eqb.

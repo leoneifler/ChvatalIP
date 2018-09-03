@@ -129,8 +129,8 @@ Local Open Scope char_scope.
 Definition extractInt (l : LString.t) : Z :=
   if all isDigit l then Z.of_nat (extractNumber l)
   else if head " " l == "-" then Zneg (Pos.of_nat ( extractNumber (behead l)))
-       else Z0. 
- 
+       else Z0.
+
 (** Takes a list of strings and converts each of them to an int (0 if not convertible) *)
 Fixpoint parse (l :  seq LString.t) : seq Z :=
   [seq extractInt x | x <- l].
@@ -153,6 +153,9 @@ Fixpoint convert2sparsevec  (ln : list Z)(vartable : list nat)(isG : bool ) : sv
   let elem := (fun b p => if b then (idx p.1, p.2) else (idx p.1, Z.mul p.2 (-1)%Z) ) in
   [seq (elem isG) x | x <- ln2].
 
+Definition a := of_string "C207 L 1 2 18 1 16 1".
+Check a.
+
 (** Takes a vipr-line as input and creates the corresponding sparse vector*)
 Definition parseline (vartable : list nat) (line : LString.t) : svec :=
   let s := tokenize  line in
@@ -161,3 +164,5 @@ Definition parseline (vartable : list nat) (line : LString.t) : svec :=
              else (0, Z.mul (-1)%Z (extractInt (nth [" "]  s 2))) in
   rhs :: convert2sparsevec (trim_to_rel (parse s)) vartable isLower .
 
+
+Compute parseline (iota 1 23) a.

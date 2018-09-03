@@ -34,17 +34,19 @@ def createConversion( size ):
 
 vipfile = sys.argv[1]
 size =  int( sys.argv[2] )
-outputname = vipfile + 'conv'
+outputname = vipfile + '.input'
 table = createConversion(size)
-
-
 
 with open(vipfile, 'r') as file:
     outfile = open(outputname, 'w')
     vartablestarted = False
     for line in file.readlines():
+
         if line.strip() == '':
             continue
+        # we don't need the derivation section for coq-input checker
+        if line.startswith("DER"):
+            break
         if not vartablestarted:
             if line.split()[0] == 'VAR':
                 vartablestarted = True
@@ -65,10 +67,6 @@ with open(vipfile, 'r') as file:
                     #print index
                     chgIndex = str(table[index])
                     elems[2] = chgIndex
-                    outfile.write( elems[0] + '$' + elems[1] + '#' + elems[2] + '\n')
+                    outfile.write( "t_" + elems[1] + '#' + elems[2] + '\n')
 file.close()
 outfile.close()
-
-
-
-

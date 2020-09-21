@@ -3,7 +3,7 @@
 Chvátal's Conjecture states that there can exist no intersecting family in a downset that has more elements than a maximal-sized star. A collection of work on the subject is available on [Chvátal's Website](http://users.encs.concordia.ca/~chvatal/conjecture.html).
 We present a computational framework that is able to prove the conjecture for ground sets of seven or fewer elements.
 
-> Leon Eifler, Ambros Gleixner, and Jonad Pulaj: [Chvátal’s Conjecture Holds for Ground Sets of Seven Elements](https://opus4.kobv.de/opus4-zib/frontdoor/index/index/docId/7024). Preprint. Takustr. 7, 14195 Berlin: ZIB, 2018.
+> Leon Eifler, Ambros Gleixner, and Jonad Pulaj: [A Safe Computational Framework for Integer Programming applied to Chvátal's Conjecture](). Preprint.
 
 This repository provides:
 - MPS and ZIMPL files that model the Integer Programs described in the paper.
